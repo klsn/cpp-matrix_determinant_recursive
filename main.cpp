@@ -2,11 +2,12 @@
 using namespace std;
 
 vector<vector<double>> trimMat(vector<vector<double>> matrix, int x, int y) {
-	int sz = matrix.size() -1, p=-1, q=-1;
+	int sz, p=-1, q=-1;
+	sz = matrix.size() -1;
 	vector<vector<double>> ans (sz, vector<double>(sz));
 	for (int i=0;i<=sz;i++){
 		if (i == x) continue;
-		p++;
+		p++;q=-1;
 		for (int j=0;j<=sz;j++){
 			if (j == y) continue;
 			q++;
@@ -23,6 +24,7 @@ double det(vector<vector<double>> matrix) {
 	for (int i=0;i<sz;i++){
 		ans += pow(-1,i) * matrix.at(i).at(0) * det(trimMat(matrix, i, 0)) ;
 	}
+	return ans;
 }
 	
 
